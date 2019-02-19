@@ -29,6 +29,8 @@ VALUES (3, 2);
 INSERT INTO PRODUCT (name, description, quantity, price)
 VALUES ('Soap', 'Pears baby soap for Kids', 1, 35.75);
 INSERT INTO PRODUCT (name, description, quantity, price)
+VALUES ('Cup', 'Plastic cup', 100, 0.50);
+INSERT INTO PRODUCT (name, description, quantity, price)
 VALUES ('Tooth Brush', 'Signal Tooth Brushes Size in (L, M, S)', 5, 34.50);
 INSERT INTO PRODUCT (name, description, quantity, price)
 VALUES ('Shirt', 'Casual Shirt imported from France', 3, 1500.00);

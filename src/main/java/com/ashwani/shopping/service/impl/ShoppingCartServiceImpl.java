@@ -20,7 +20,6 @@ import java.util.Map;
 /**
  * Shopping Cart is implemented with a Map, and as a session bean
  *
- * @author Dusan
  */
 @Service
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -104,3 +103,28 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 .orElse(BigDecimal.ZERO);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <div th:replace="/fragments/header :: header"/>
+</head>
+
+<body>
+
+<div th:replace="/fragments/header :: navbar"/>
+
+<div class="container">
+
+    <h1 class="jumbotron">
+        Thank you <span sec:authentication="name"></span> for shopping with us
+    </h1>
+
+    <h2 style="text-align:center;padding-top:20px;">
+        Your payment has been processed successfully!
+    </h2>
+    <h1 style="text-align:center;">Order Confirmed </h1>
+
+    <script type="text/javascript">
+        var timer = 10; //seconds
+        website = "http://localhost:8070/home";
+        function delayer() {
+            window.location = website;
+        }
+        setTimeout('delayer()', 1000 * timer);
+    </script>
+
+    <h4><i>
+        <div class="loader">You will be redirected to home page&nbsp;&nbsp;<span class="loader__dot">.</span>&nbsp;&nbsp;<span
+                class="loader__dot">.</span>&nbsp;&nbsp;<span class="loader__dot">.</span></div>
+    </i></h4>
+
+</div>
+
+<div th:replace="/fragments/footer :: footer"/>
+
+</body>
+</html>
