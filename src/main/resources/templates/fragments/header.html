@@ -17,6 +17,7 @@
 
         <link rel="stylesheet" th:href="@{/css/main.css}"
               href="../../css/main.css"/>
+            
     </div>
 
 </head>
@@ -25,10 +26,13 @@
 
 <!-- this is header -->
 <div th:fragment="navbar">
+  <div th:fragment="navbar">
     <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" th:href="@{/home}">Bingo</a>
+                <a class="navbar-brand" th:href="@{/home}">Shop</a>
+                 <a class="navbar-brand" th:href="@{/home}">Deals</a>
+                  <a class="navbar-brand" th:href="@{/customerService}">CustomerService</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse navbar-right">
                 <!-- show shoppingCart only if user is not yet authenticated -->
@@ -50,6 +54,7 @@
             </div>
         </div>
     </nav>
+</div>
 </div>
 
 </body>

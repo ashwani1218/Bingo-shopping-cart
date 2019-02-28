@@ -43,5 +43,14 @@ public class HomeController {
         modelAndView.setViewName("/home");
         return modelAndView;
     }
+    
+    @GetMapping("/customerService")
+    public ModelAndView customerService() {
+
+        ModelAndView modelAndView = new ModelAndView();
+        
+        modelAndView.setViewName("/customerService");
+        return modelAndView;
+    }
 
 }

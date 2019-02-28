@@ -3,7 +3,7 @@ package com.ashwani.shopping.controller;
 import com.ashwani.shopping.service.PaypalService;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
-import com.paypal.base.rest.APIContext;
+
 import com.paypal.base.rest.PayPalRESTException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ashwani.shopping.exception.NotEnoughProductsInStockException;
 import com.ashwani.shopping.service.ProductService;
 import com.ashwani.shopping.service.ShoppingCartService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class ShoppingCartController {

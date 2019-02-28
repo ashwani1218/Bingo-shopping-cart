@@ -4,7 +4,11 @@ import com.ashwani.shopping.model.Product;
 
 public class NotEnoughProductsInStockException extends Exception {
 
-    private static final String DEFAULT_MESSAGE = "Not enough products in stock";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final String DEFAULT_MESSAGE = "Not enough products in stock";
 
     public NotEnoughProductsInStockException() {
         super(DEFAULT_MESSAGE);

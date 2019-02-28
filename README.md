@@ -2,12 +2,10 @@
 
 ## About
 
-This is a demo project for practicing Spring + Thymeleaf. The idea was to build some basic shopping cart web app.
+This is a Final Year project Using Spring + Thymeleaf. The idea was to build shopping cart web app.
 
 It was made using **Spring Boot**, **Spring Security**, **Thymeleaf**, **Spring Data JPA**, **Spring Data REST and Docker**. 
 Database is in memory **H2**.
-
-There is a login and registration functionality included.
 
 Users can shop for products. Each user has his own shopping cart (session functionality).
 Checkout is transactional.
@@ -24,16 +22,6 @@ as well as change the port number.
 ## How to run
 
 There are several ways to run the application. You can run it from the command line with included Maven Wrapper, Maven or Docker. 
-
-Once the app starts, go to the web browser and visit `http://localhost:8070/home`
-
-Admin username: **admin**
-
-Admin password: **admin**
-
-User username: **user**
-
-User password: **password**
 
 ### Maven Wrapper
 
