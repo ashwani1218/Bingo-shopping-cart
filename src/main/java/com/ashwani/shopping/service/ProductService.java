@@ -12,5 +12,11 @@ public interface ProductService {
     Optional<Product> findById(Long id);
 
     Page<Product> findAllProductsPageable(Pageable pageable);
+    
+    Product addProduct(Product product);
+    
+    Product updateProduct(Product product);
+    
+    void deleteProduct(Long id);
 
 }
