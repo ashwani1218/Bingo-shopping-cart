@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,27 +13,28 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ashwani.shopping.model.Product;
 import com.ashwani.shopping.service.ProductService;
 
-@RestController("/seller")
+@RestController
 public class ProductSellerController {
      
 	@Autowired
 	private ProductService productService;
 	
-	@PostMapping("/products/add")
-	public ModelAndView addProduct(@Valid Product product) {
-		 productService.addProduct(product);
-		 return new ModelAndView("products/sucess");
+	@PostMapping("/seller/products/add")
+	public ModelAndView addProduct(@ModelAttribute @Valid Product product) {
+		 Product addProduct = productService.addProduct(product);
+		 System.out.println(" Added product "+addProduct.getName()+ "with id " + addProduct.getId());
+		 return new ModelAndView("/seller/items/success");
 	}
 	
-	@PostMapping("/products/update")
+	@PostMapping("/seller/products/update")
 	public ModelAndView updateProduct(@Valid Product product) {
 		 productService.updateProduct(product);
-		 return new ModelAndView("products/sucess");
+		 return new ModelAndView("/seller/items/success");
 	}
 	
-	@DeleteMapping("/products/{productId}")
+	@DeleteMapping("/seller/products/{productId}")
 	public ModelAndView deleteProduct(@PathVariable Long productId) {
 		productService.deleteProduct(productId);
-		return new ModelAndView("products/sucess");
+		return new ModelAndView("/seller/items/success");
 	}
 }
