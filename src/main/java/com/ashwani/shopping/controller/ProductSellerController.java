@@ -21,15 +21,22 @@ public class ProductSellerController {
 	
 	@PostMapping("/seller/products/add")
 	public ModelAndView addProduct(@ModelAttribute @Valid Product product) {
-		 Product addProduct = productService.addProduct(product);
-		 System.out.println(" Added product "+addProduct.getName()+ "with id " + addProduct.getId());
-		 return new ModelAndView("/seller/items/success");
+		 Product addedProduct = productService.addProduct(product);
+		 System.out.println(" Added product "+addedProduct.getName()+ "with id " + addedProduct.getId());
+		
+		 ModelAndView modelAndView = new ModelAndView("/seller/items/success");
+		 modelAndView.addObject("addedProduct",addedProduct);
+		 return modelAndView;
 	}
 	
 	@PostMapping("/seller/products/update")
 	public ModelAndView updateProduct(@Valid Product product) {
-		 productService.updateProduct(product);
-		 return new ModelAndView("/seller/items/success");
+		 Product updatedProduct = productService.updateProduct(product);
+		 System.out.println(" Updated product "+updatedProduct.getName()+ "with id " + updatedProduct.getId());
+		
+		 ModelAndView modelAndView = new ModelAndView("/seller/items/success");
+		 modelAndView.addObject("updatedProduct",updatedProduct);
+		 return modelAndView;
 	}
 	
 	@DeleteMapping("/seller/products/{productId}")
