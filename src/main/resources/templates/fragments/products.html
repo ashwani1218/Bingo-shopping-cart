@@ -19,6 +19,10 @@
                sec:authorize="isAuthenticated()" th:if="${product.quantity}>0">
                 <button type="button" class="btn btn-primary" th:text="Buy">Buy</button>
             </a>
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+            		<button type="button" class="btn btn-primary" th:text="Update">UPDATE</button>
+				<button type="button" class="btn btn-primary" th:text="Delete">DELETE</button>
+			</div>
         </div>
         <br></br>
     </div>
