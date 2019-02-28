@@ -17,7 +17,8 @@ public class ProductMenuController {
 	
 	@GetMapping("/seller/items/add")
 	public ModelAndView addProduct(@Valid Product product) {
-		 
+		 ModelAndView modelAndView = new ModelAndView();
+		 modelAndView.addObject("product",product);
 		 return new ModelAndView("/seller/items/add");
 	}
 	
