@@ -11,10 +11,12 @@
 <div th:replace="/fragments/header :: navbar"/>
 
 <div class="container">
-
-    <h1 class="jumbotron">
-     	Added Product sucessfully. 
-    </h1>
+   
+    <div th:switch="${action}"> 
+	  <p th:case="'added'">Product Added Successfully</p>
+	  <p th:case="updated">Product Updated Successfully</p>
+	  <p th:case="deleted">Product Deleted Successfully</p> 
+	</div>
 
    
 

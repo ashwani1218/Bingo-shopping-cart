@@ -10,11 +10,5 @@
 	<div class="container" sec:authorize="isAuthenticated()">
 		<a class="" th:href="@{/seller/items/add}">Add Product</a>
 	</div>
-	<div class="container" sec:authorize="isAuthenticated()">
-		<a class="" th:href="@{/seller/items/update}">Update Product</a>
-	</div>
-	<div class="container" sec:authorize="isAuthenticated()">
-		<li class="active"><a class="" th:href="@{/seller/items/delete}">Delete Product</a></li>
-	</div>
 </body>
 </html>

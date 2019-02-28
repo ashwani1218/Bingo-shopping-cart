@@ -25,7 +25,8 @@ public class ProductSellerController {
 		 System.out.println(" Added product "+addedProduct.getName()+ "with id " + addedProduct.getId());
 		
 		 ModelAndView modelAndView = new ModelAndView("/seller/items/success");
-		 modelAndView.addObject("addedProduct",addedProduct);
+		 modelAndView.addObject("action", "added");
+		 modelAndView.addObject("product",addedProduct);
 		 return modelAndView;
 	}
 	
@@ -35,13 +36,16 @@ public class ProductSellerController {
 		 System.out.println(" Updated product "+updatedProduct.getName()+ "with id " + updatedProduct.getId());
 		
 		 ModelAndView modelAndView = new ModelAndView("/seller/items/success");
-		 modelAndView.addObject("updatedProduct",updatedProduct);
+		 modelAndView.addObject("action", "updated");
+		 modelAndView.addObject("product",updatedProduct);
 		 return modelAndView;
 	}
 	
-	@DeleteMapping("/seller/products/{productId}")
-	public ModelAndView deleteProduct(@PathVariable Long productId) {
-		productService.deleteProduct(productId);
-		return new ModelAndView("/seller/items/success");
+	@PostMapping("/seller/products/{productId}")
+	public ModelAndView deleteProduct(@ModelAttribute Product product) {
+		 productService.deleteProduct(product.getId());
+		 ModelAndView modelAndView = new ModelAndView("/seller/items/success");
+		 modelAndView.addObject("action", "deleted");
+		return modelAndView;
 	}
 }

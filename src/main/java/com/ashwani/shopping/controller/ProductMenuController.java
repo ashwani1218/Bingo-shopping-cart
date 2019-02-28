@@ -1,5 +1,7 @@
 package com.ashwani.shopping.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ import com.ashwani.shopping.service.ProductService;
 @RestController
 public class ProductMenuController {
    
+	@Autowired
+	private ProductService productService;
 	
 	@GetMapping("/seller/items/add")
 	public ModelAndView addProduct(@Valid Product product) {
@@ -28,9 +32,11 @@ public class ProductMenuController {
 		 return new ModelAndView("/seller/items/update");
 	}
 	
-	@GetMapping("/seller/items/delete")
-	public ModelAndView deleteProduct() {
-		
-		return new ModelAndView("/seller/items/delete");
+	@GetMapping("/seller/items/delete/{id}")
+	public ModelAndView deleteProduct(@PathVariable Long id) {
+		Optional<Product> product = productService.findById(id);
+		ModelAndView modelAndView = new ModelAndView("/seller/items/delete");
+		modelAndView.addObject("product",product.get());
+		return modelAndView;
 	}
 }
