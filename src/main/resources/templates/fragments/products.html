@@ -20,10 +20,12 @@
                 <button type="button" class="btn btn-primary" th:text="Buy">Buy</button>
             </a>
             <div sec:authorize="hasRole('ROLE_ADMIN')">
-            		<button type="button" class="btn btn-primary" th:text="Update">UPDATE</button>
+                <a th:href="@{'/seller/items/update/{id}'(id=${product.id})}" class="col-md-1">
+            			<button type="button" class="btn btn-primary" th:text="Update">UPDATE</button>
+            		</a>
             		
             		<a th:href="@{'/seller/items/delete/{id}'(id=${product.id})}" class="col-md-1">
-				<button type="button" class="btn btn-primary" th:text="Delete">DELETE</button>
+					<button type="button" class="btn btn-primary" th:text="Delete">DELETE</button>
 				</a>
 			</div>
         </div>

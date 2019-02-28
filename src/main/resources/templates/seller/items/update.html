@@ -1,9 +1,18 @@
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-
 <body>
-	<h1>update Product Page</h1>
+	<h1>Form</h1>
+    <form action="#" th:action="@{/seller/products/update}" th:object="${product}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    	<p>Name <input type="text" th:field="*{name}" /></p>
+    	<p>Description<input type="text" th:field="*{description}" /></p>
+    	<p>Quantity :<input type="text" th:field="*{quantity}" /></p>
+    	<p>Price :<input type="text" th:field="*{price}" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
 </body>
 </html>

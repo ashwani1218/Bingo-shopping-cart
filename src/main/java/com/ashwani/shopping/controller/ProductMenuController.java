@@ -26,10 +26,12 @@ public class ProductMenuController {
 		 return new ModelAndView("/seller/items/add");
 	}
 	
-	@GetMapping("/seller/items/update")
-	public ModelAndView updateProduct(@Valid Product product) {
-		 
-		 return new ModelAndView("/seller/items/update");
+	@GetMapping("/seller/items/update/{id}")
+	public ModelAndView updateProduct(@PathVariable Long id) {
+		Optional<Product> product = productService.findById(id);
+		ModelAndView modelAndView = new ModelAndView("/seller/items/update");
+		modelAndView.addObject("product",product.get());
+		return modelAndView;
 	}
 	
 	@GetMapping("/seller/items/delete/{id}")
