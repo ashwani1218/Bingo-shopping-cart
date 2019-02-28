@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+	<div th:replace="/fragments/header :: header"/>
+</head>
+<body>
+	<div th:replace="/fragments/header :: navbar"/>
+	
+	<div class="container" sec:authorize="isAuthenticated()">
+		<a class="" th:href="@{/seller/items/add}">Add Product</a>
+	</div>
+	<div class="container" sec:authorize="isAuthenticated()">
+		<a class="" th:href="@{/seller/items/update}">Update Product</a>
+	</div>
+	<div class="container" sec:authorize="isAuthenticated()">
+		<li class="active"><a class="" th:href="@{/seller/items/delete}">Delete Product</a></li>
+	</div>
+</body>
+</html>

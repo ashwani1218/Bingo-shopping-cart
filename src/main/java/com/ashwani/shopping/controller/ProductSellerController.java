@@ -7,31 +7,32 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ashwani.shopping.model.Product;
 import com.ashwani.shopping.service.ProductService;
 
 @RestController("/seller")
-public class ProductController {
+public class ProductSellerController {
      
 	@Autowired
 	private ProductService productService;
 	
 	@PostMapping("/products/add")
-	public boolean addProduct(@Valid Product product) {
+	public ModelAndView addProduct(@Valid Product product) {
 		 productService.addProduct(product);
-		 return true;
+		 return new ModelAndView("products/sucess");
 	}
 	
 	@PostMapping("/products/update")
-	public boolean updateProduct(@Valid Product product) {
+	public ModelAndView updateProduct(@Valid Product product) {
 		 productService.updateProduct(product);
-		 return true;
+		 return new ModelAndView("products/sucess");
 	}
 	
 	@DeleteMapping("/products/{productId}")
-	public boolean deleteProduct(@PathVariable Long productId) {
+	public ModelAndView deleteProduct(@PathVariable Long productId) {
 		productService.deleteProduct(productId);
-		return true;
+		return new ModelAndView("products/sucess");
 	}
 }

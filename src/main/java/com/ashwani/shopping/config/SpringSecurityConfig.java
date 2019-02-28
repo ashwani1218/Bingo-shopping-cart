@@ -56,7 +56,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/home", "/registration", "/error", "/h2-console/**","/customerService").permitAll()
+                .antMatchers("/home", "/registration", "/error","/customerService").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -68,7 +68,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler)
-                // Fix for H2 console
                 .and().headers().frameOptions().disable();
     }
 
