@@ -13,25 +13,23 @@ import com.ashwani.shopping.service.ProductService;
 
 @RestController
 public class ProductMenuController {
-     
-	@Autowired
-	private ProductService productService;
+   
 	
 	@GetMapping("/seller/items/add")
 	public ModelAndView addProduct(@Valid Product product) {
-		 productService.addProduct(product);
+		 
 		 return new ModelAndView("/seller/items/add");
 	}
 	
 	@GetMapping("/seller/items/update")
 	public ModelAndView updateProduct(@Valid Product product) {
-		 productService.updateProduct(product);
+		 
 		 return new ModelAndView("/seller/items/update");
 	}
 	
-	@GetMapping("/seller/items/{productId}")
-	public ModelAndView deleteProduct(@PathVariable Long productId) {
-		productService.deleteProduct(productId);
+	@GetMapping("/seller/items/delete")
+	public ModelAndView deleteProduct() {
+		
 		return new ModelAndView("/seller/items/delete");
 	}
 }
