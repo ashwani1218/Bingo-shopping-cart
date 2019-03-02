@@ -1,5 +1,7 @@
 package com.ashwani.shopping.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -10,8 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
-
-import javax.sql.DataSource;
 
 /**
  * Spring Security Configuration
@@ -46,8 +46,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * HTTPSecurity configurer
      * - roles ADMIN allow to access /admin/**
-     * - roles USER allow to access /user/** and /newPost/**
-     * - anybody can visit /, /home, /about, /registration, /error, /blog/**, /post/**, /h2-console/**
+     * - anybody can visit /, /home, /about, /registration, /error, /blog/**, /post/**
      * - every other page needs authentication
      * - custom 403 access denied handler
      */
@@ -56,6 +55,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/items","/browser/index.html#/","/h2-console/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/home", "/registration", "/error","/customerService").permitAll()
                 .anyRequest().authenticated()
                 .and()
