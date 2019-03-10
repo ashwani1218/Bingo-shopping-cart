@@ -34,9 +34,9 @@
     </div>
 
     <div class="row panel-body">
-        <h2 class="col-md-11" th:inline="text">Total: [[${total}]]</h2>
+        <h2 class="col-md-8" th:inline="text">Total: [[${total}]]</h2>
         <form method="get" th:action="@{/pay}">
-        <a class="col-md-1">
+        <a class="col-md-4">
             <input th:type="hidden" th:name="total" th:value="${total}"/>
             <input type="image" name="submit" border="0" align="justify"
                    src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-small.png"
