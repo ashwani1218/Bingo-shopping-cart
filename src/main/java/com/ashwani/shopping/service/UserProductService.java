@@ -1,8 +1,11 @@
 package com.ashwani.shopping.service;
 
 
+import com.ashwani.shopping.model.Product;
 import com.ashwani.shopping.model.UserProduct;
+
 import java.util.List;
+import java.util.Map;
 
 public interface UserProductService {
     
@@ -10,5 +13,5 @@ public interface UserProductService {
     
     List<UserProduct> getProductsBoughtByUser();
 
-    void addUserProduct(UserProduct userProduct);
+    void addUserProduct(String userId, Map<Product, Integer> products);
 }

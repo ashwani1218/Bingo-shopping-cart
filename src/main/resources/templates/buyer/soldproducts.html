@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <div th:replace="/fragments/header :: header"/>
+</head>
+
+<body>
+
+<div th:replace="/fragments/header :: navbar"/>
+
+<div class="container">
+ 	<div class="panel-heading" sec:authorize="hasRole('ROLE_ADMIN')">
+	    Following are the details of sold products:
+	    <table>
+		     <tr th:each="userproduct : ${userproducts}">
+			    <td>
+			        <input th:name="'Product Name'" th:value="${userproduct.product_name}"/>
+			    </td>
+			    <td>
+			        <input th:name="'Quantity'" th:value="${userproduct.quantity}"/>
+			    </td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div th:replace="/fragments/footer :: footer"/>
+
+</body>
+</html>

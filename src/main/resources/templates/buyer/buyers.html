@@ -11,12 +11,18 @@
 
 <div class="container">
 
-	<div class="panel-default well" th:each="buyer : ${buyers}">
-        <div class="panel-heading">
-            <h1 th:text="${buyer.user_id}"></h1>
-        </div>
-        <br></br>
-    </div>
+    Following are the list of users who bought our products:
+    <div th:fragment="products">
+	    <div class="panel-default well" th:each="buyer : ${buyers}">
+	        <div  sec:authorize="hasRole('ROLE_ADMIN')">
+	            <a th:href="@{/userproducts/} + ${buyer}" class="col-md-1"
+	               sec:authorize="isAuthenticated()">
+	                <button type="button" class="btn btn-primary" th:text="${buyer}">user_id</button>
+	            </a>
+	        </div>
+	        <br></br>
+	    </div>
+	</div>
 
 </div>
 

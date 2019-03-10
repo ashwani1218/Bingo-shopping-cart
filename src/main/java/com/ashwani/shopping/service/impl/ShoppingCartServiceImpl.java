@@ -107,6 +107,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 throw new NotEnoughProductsInStockException(product);
             entry.getKey().setQuantity(product.getQuantity() - entry.getValue());
         }
+        userProductServiceImpl.addUserProduct(userId,products);
         productRepository.save(products.keySet());
         productRepository.flush();
         products.clear();
