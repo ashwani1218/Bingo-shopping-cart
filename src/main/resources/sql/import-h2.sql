@@ -12,6 +12,9 @@ INSERT INTO USER (user_id, password, email, username, name, last_name, active)
 VALUES (3, '$2a$06$OAPObzhRdRXBCbk7Hj/ot.jY3zPwR8n7/mfLtKIgTzdJa4.6TwsIm', 'name@gmail.com', 'namesurname', 'Name',
         'Surname', 1);
 
+INSERT INTO USER_PRODUCTS (invoice_id,product_name, price, user_id, quantity) 
+VALUES (1,'test',1,1,2);
+
 INSERT INTO ROLE (role_id, role)
 VALUES (1, 'ROLE_ADMIN');
 INSERT INTO ROLE (role_id, role)

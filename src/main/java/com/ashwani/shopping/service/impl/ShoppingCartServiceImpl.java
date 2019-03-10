@@ -10,6 +10,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.ashwani.shopping.exception.NotEnoughProductsInStockException;
 import com.ashwani.shopping.model.Product;
 import com.ashwani.shopping.repository.ProductRepository;
+import com.ashwani.shopping.repository.UserProductRepository;
 import com.ashwani.shopping.service.ShoppingCartService;
 
 import java.math.BigDecimal;
@@ -27,12 +28,14 @@ import java.util.Map;
 public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     private final ProductRepository productRepository;
+    private final UserProductServiceImpl userProductServiceImpl;
 
     private Map<Product, Integer> products = new HashMap<>();
 
     @Autowired
-    public ShoppingCartServiceImpl(ProductRepository productRepository) {
+    public ShoppingCartServiceImpl(ProductRepository productRepository, UserProductServiceImpl userProductServiceImpl) {
         this.productRepository = productRepository;
+        this.userProductServiceImpl = userProductServiceImpl;
     }
 
     /**

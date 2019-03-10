@@ -4,7 +4,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.ashwani.shopping.model.Product;
+import com.ashwani.shopping.model.UserProduct;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ProductService {

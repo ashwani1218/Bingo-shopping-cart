@@ -6,9 +6,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ashwani.shopping.model.Product;
+import com.ashwani.shopping.model.UserProduct;
 import com.ashwani.shopping.repository.ProductRepository;
 import com.ashwani.shopping.service.ProductService;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service

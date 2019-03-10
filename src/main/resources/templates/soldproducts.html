@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <div th:replace="/fragments/header :: header"/>
+</head>
+
+<body>
+
+<div th:replace="/fragments/header :: navbar"/>
+
+<div class="container">
+
+    Following are the details of sold products:
+    <div th:fragment="products">
+    <div class="panel-default well" th:each="userproduct : userproducts">
+        <div class="panel-heading">
+            <h1 th:text="${userproduct.name}"></h1>
+        </div>
+        <br></br>
+    </div>
+</div>
+
+</div>
+
+<div th:replace="/fragments/footer :: footer"/>
+
+</body>
+</html>
