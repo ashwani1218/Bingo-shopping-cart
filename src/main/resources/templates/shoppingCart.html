@@ -26,7 +26,7 @@
         <div class="row panel-body">
             <div th:inline="text" class="col-md-2">Price: [[${product.getKey().price}]] $</div>
             <div th:inline="text" class="col-md-9">Quantity: [[${product.getValue()}]]</div>
-            <a th:href="@{'/shoppingCart/removeProduct/{id}'(id=${product.getKey().id})}" class="col-md-1">
+            <a th:href="@{'/shoppingCart/removeProduct/{id}/'(id=${product.getKey().id})} + ${#authentication.getPrincipal().getUsername()}" class="col-md-1">
                 <button type="button" class="btn btn-primary" th:text="Remove">Remove</button>
             </a>
         </div>
@@ -35,7 +35,7 @@
 
     <div class="row panel-body">
         <h2 class="col-md-8" th:inline="text">Total: [[${total}]]</h2>
-        <form method="get" th:action="@{/pay}">
+        <form method="get" th:action="@{/pay/} + ${#authentication.getPrincipal().getUsername()}">
         <a class="col-md-4">
             <input th:type="hidden" th:name="total" th:value="${total}"/>
             <input type="image" name="submit" border="0" align="justify"

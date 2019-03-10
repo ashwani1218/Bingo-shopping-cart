@@ -8,13 +8,13 @@ import com.ashwani.shopping.model.Product;
 
 public interface ShoppingCartService {
 
-    void addProduct(Product product);
+    void addProduct(String userId, Product productId);
 
-    void removeProduct(Product product);
+    void removeProduct(String userId, Product productId);
 
-    Map<Product, Integer> getProductsInCart();
+    Map<Product, Integer> getProductsInCart(String userId);
 
-    void checkout() throws NotEnoughProductsInStockException;
+    void checkout(String userId) throws NotEnoughProductsInStockException;
 
-    BigDecimal getTotal();
+    BigDecimal getTotal(String userId);
 }

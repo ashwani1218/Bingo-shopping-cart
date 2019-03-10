@@ -29,7 +29,7 @@ public class PaypalServiceImpl implements PaypalService {
     @Autowired
     private PaypalConfig paypalConfig;
 
-    public Payment createPayment(Double total) throws PayPalRESTException {
+    public Payment createPayment(Double total, String userId) throws PayPalRESTException {
        // apiContext.setMaskRequestId(false);
         Map<String,String> map = new HashMap<>();
         map.put("PayPal-Request-Id", UUID.randomUUID().toString());
@@ -58,7 +58,7 @@ public class PaypalServiceImpl implements PaypalService {
         RedirectUrls redirectUrls = new RedirectUrls();
 
         String cancelUrl = baseUrl + "/" + this.cancelUrl + "?";
-        String successURL = baseUrl + "/" + successUrl + "?";
+        String successURL = baseUrl + "/" + successUrl + "?userId="+userId;
         redirectUrls.setCancelUrl(cancelUrl);
         redirectUrls.setReturnUrl(successURL);
         payment.setRedirectUrls(redirectUrls);
