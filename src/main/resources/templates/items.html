@@ -8,7 +8,9 @@
 	<div th:replace="/fragments/header :: navbar"/>
 	
 	<div class="container" sec:authorize="isAuthenticated()">
-		<a class="" style="font-size: xx-large;" align="center" th:href="@{/seller/items/add}">Add Product</a>
+		<a class="col-md-4" style="font-size: xx-large;" align="center" th:href="@{/seller/items/add}">Add Product</a>
+		
+		<a class="col-md-4" style="font-size: xx-large;" align="center" th:href="@{/modifyproducts}">Update/Delete Product</a>
 	</div>
 </body>
 </html>
