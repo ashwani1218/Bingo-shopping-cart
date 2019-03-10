@@ -40,7 +40,7 @@ public class PaypalServiceImpl implements PaypalService {
         amount.setTotal(String.format("%.2f", total));
 
         Transaction transaction = new Transaction();
-        transaction.setDescription("pay_testing_shankar");
+        transaction.setDescription("pay_bingo");
         transaction.setAmount(amount);
 
         List<Transaction> transactions = new ArrayList<>();
@@ -68,7 +68,6 @@ public class PaypalServiceImpl implements PaypalService {
 
 
     public Payment executePayment(String paymentId, String payerId) throws PayPalRESTException {
-        System.out.println();
         Payment payment = new Payment();
         payment.setId(paymentId);
         PaymentExecution paymentExecute = new PaymentExecution();
