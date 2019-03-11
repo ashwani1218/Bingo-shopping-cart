@@ -30,12 +30,14 @@
     <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
+            	<a class="navbar-brand navbar-left" style="font-size: x-large;color: gray; font-weight: bolder;" th:href="@{/home}">BINGO</a>
                 <a class="navbar-brand" th:href="@{/home}">Shop</a>
-                 <a class="navbar-brand" th:href="@{/deals}">Deals</a>
-                 <a class="navbar-brand" th:href="@{/items}">Products</a>
-                  <a class="navbar-brand" th:href="@{/customerService}">CustomerService</a>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse navbar-right">
+                <a class="navbar-brand" th:href="@{/deals}">Deals</a>
+                <a class="navbar-brand" th:href="@{/items}">Products</a>
+                <a class="navbar-brand" th:href="@{/customerService}">CustomerService</a>
+             </div> 
+           
+             <div id="navbar" class="collapse navbar-collapse navbar-right">
                 <!-- show shoppingCart only if user is not yet authenticated -->
                 <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
                     <li class="active"><a th:href="@{/shoppingCart/} + ${#authentication.getPrincipal().getUsername()}">Shopping Cart</a></li>
