@@ -12,16 +12,20 @@
 
 <div class="container">
  	<div class="panel-heading" sec:authorize="hasRole('ROLE_ADMIN')">
-	    Following are the details of sold products:
-	    <table>
-		     <tr th:each="userproduct : ${userproducts}">
-			    <td>
-			        <input th:name="'Product Name'" th:value="${userproduct.product_name}"/>
-			    </td>
-			    <td>
-			        <input th:name="'Quantity'" th:value="${userproduct.quantity}"/>
-			    </td>
+	   <p style="color: black;font-weight: bold;font-size: xx-large;"> Following are the details of sold products:</p>
+	    <table class="table table-striped">
+		   <thead>  
+		     <tr>
+			   <th style="width: 150px;">Product Name</th>
+			   <th style="width: 150px;">Quantity</th>
 			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="userproduct : ${userproducts}">
+				 <td th:text="${userproduct.product_name}"></td>
+			    <td th:text="${userproduct.quantity}"></td>
+			</tr>
+			</tbody>
 		</table>
 	</div>
 </div>
