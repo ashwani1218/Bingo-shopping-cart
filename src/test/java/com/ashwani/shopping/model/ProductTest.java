@@ -12,7 +12,6 @@ class ProductTest {
 
 	Product product;
 	
-	
 	@BeforeEach
 	void setUp() throws Exception {
 		product=new Product();

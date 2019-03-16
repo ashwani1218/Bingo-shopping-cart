@@ -9,7 +9,7 @@
 
 <div th:replace="/fragments/header :: navbar"/>
 
-<div class="container">
+<div class="container" sec:authorize="isAuthenticated()">
 
     Following are the list of users who bought our products:
     <div th:fragment="products">

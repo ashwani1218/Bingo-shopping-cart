@@ -11,7 +11,7 @@ public interface UserProductService {
     
     List<UserProduct> getBuyers();
     
-    List<UserProduct> getProductsBoughtByUser();
+    List<UserProduct> getProductsBoughtByUser(String userId);
 
     void addUserProduct(String userId, Map<Product, Integer> products);
 }

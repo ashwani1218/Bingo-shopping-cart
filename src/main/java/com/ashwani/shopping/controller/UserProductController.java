@@ -34,7 +34,7 @@ public class UserProductController {
 	
 	@GetMapping("/userproducts/{userid}")
 	public ModelAndView soldProducts(@PathVariable("userid") String userid) {
-		List<UserProduct> userproducts = userProductService.getBuyers();
+		List<UserProduct> userproducts = userProductService.getProductsBoughtByUser(userid);
 		ModelAndView modelAndView = new ModelAndView("/buyer/soldproducts");
 		modelAndView.addObject("userproducts", userproducts);
 		return modelAndView;

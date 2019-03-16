@@ -8,6 +8,7 @@ import com.ashwani.shopping.model.UserProduct;
 import com.ashwani.shopping.repository.UserProductRepository;
 import com.ashwani.shopping.service.UserProductService;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -24,13 +25,19 @@ public class UserProductServiceImpl implements UserProductService {
     }
 
 	@Override
-	public List<UserProduct> getBuyers() {
-		List<UserProduct>  userproducts = userProductRepository.findAll();
-		return userproducts;
+	public List<UserProduct> getProductsBoughtByUser(String userId) {
+		List<UserProduct>  allUserproducts = userProductRepository.findAll();
+		List<UserProduct>  userProducts=new ArrayList<>();
+		for(UserProduct userProduct: allUserproducts) {
+			if(userProduct.getUser_id().equals(userId)) {
+				userProducts.add(userProduct);
+			}
+		}
+		return userProducts;
 	}
 
 	@Override
-	public List<UserProduct> getProductsBoughtByUser() {
+	public List<UserProduct> getBuyers() {
 		List<UserProduct>  userproducts = userProductRepository.findAll();
 		return userproducts;
 	}
