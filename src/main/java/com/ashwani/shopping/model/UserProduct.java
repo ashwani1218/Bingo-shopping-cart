@@ -21,7 +21,7 @@ public class UserProduct {
     @Length(min = 3, message = "*Name must have at least 5 characters")
     private String product_name;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private String user_id;
 
     @Column(name = "quantity", nullable = false)

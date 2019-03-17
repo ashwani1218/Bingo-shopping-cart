@@ -20,7 +20,7 @@ public class Product {
     @Length(min = 3, message = "*Name must have at least 5 characters")
     private String name;
 
-    @Column(name = "description")
+    @Column(name = "description", nullable = false)
     private String description;
 
     @Column(name = "quantity", nullable = false)

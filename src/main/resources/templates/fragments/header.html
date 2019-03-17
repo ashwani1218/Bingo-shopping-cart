@@ -32,10 +32,8 @@
             <div class="navbar-header">
             	<a class="navbar-brand navbar-left" style="font-size: x-large;color: gray; font-weight: bolder;" th:href="@{/home}">BINGO</a>
                 <a class="navbar-brand" th:href="@{/home}">Shop</a>
-                <div sec:authorize="hasRole('ROLE_ADMIN')">
-                	<a class="navbar-brand" th:href="@{/buyers}">buyers</a>
-                	<a class="navbar-brand" th:href="@{/items}">Products</a>
-                </div>
+                	<a class="navbar-brand" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/buyers}">buyers</a>
+                	<a class="navbar-brand" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/items}">Products</a>
                 <a class="navbar-brand" th:href="@{/customerService}">CustomerService</a>
              </div> 
            
