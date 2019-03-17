@@ -2,6 +2,9 @@ package com.ashwani.shopping.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.websocket.server.PathParam;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ByteArrayResource;
@@ -9,8 +12,10 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ashwani.shopping.model.ProductImage;
@@ -24,9 +29,19 @@ public class FileController {
 	@Autowired
 	private ProductImageService productImageService;
 	
-	@PostMapping("/uploadFile")
-	public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file, @RequestParam Long productId) {
-	    ProductImage productImage = productImageService.storeImageForProduct(file, productId);
+	@GetMapping("/uploadFile/{productId}")
+	public ModelAndView loadFileUploadFeature(@PathVariable("productId") String productId) {
+		logger.info("loading fileupload for product "+productId);
+		ModelAndView modelAndView = new ModelAndView("/fileupload");
+		modelAndView.addObject("productId", productId);
+		return modelAndView;
+	}
+	
+	@PostMapping("/uploadFile/{productId}")
+	public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file, @PathVariable("productId") String productId) {
+		
+		logger.info("uploading image for product id"+productId);
+	    ProductImage productImage = productImageService.storeImageForProduct(file, Long.valueOf(productId));
 	
 	    String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
 	            .path("/downloadFile/")
