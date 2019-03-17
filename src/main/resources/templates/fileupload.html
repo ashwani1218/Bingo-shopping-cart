@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header :: header"> </div>
+</head>
+
+<body>
+<h1>File upload for product: </h1> <h1 th:text="${productId}"></h1>
+<form method="POST" th:action="@{'/uploadFile/' + ${productId}}" enctype="multipart/form-data">
+    <input type="file" name="file" /><br/><br/>
+    <input type="submit" value="Submit" />
+</form>
+
+</body>
+<div th:replace="/fragments/footer :: footer"> </div>
+
+</html>
