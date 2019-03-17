@@ -17,7 +17,7 @@ public class UserProduct {
     @Column(name = "invoice_id")
     private Long invoiceId;
 
-    @Column(name = "product_name", nullable = false, unique = true)
+    @Column(name = "product_name", nullable = false)
     @Length(min = 3, message = "*Name must have at least 5 characters")
     private String product_name;
 
