@@ -35,7 +35,7 @@ public class FileController {
 	}
 	
 	@PostMapping("/uploadFile/{productId}")
-	public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file, @PathVariable("productId") String productId) {
+	public ModelAndView uploadFile(@RequestParam("file") MultipartFile file, @PathVariable("productId") String productId) {
 		
 		logger.info("uploading image for product id"+productId);
 	    ProductImage productImage = productImageService.storeImageForProduct(file, Long.valueOf(productId));
@@ -45,8 +45,11 @@ public class FileController {
 	            .path(productImage.getImgId().toString())
 	            .toUriString();
 	
-	    return new UploadFileResponse(productImage.getImg_title(), fileDownloadUri,
-	            file.getContentType(), file.getSize());
+	   /* return new UploadFileResponse(productImage.getImg_title(), fileDownloadUri,
+	            file.getContentType(), file.getSize());*/
+	    ModelAndView modelAndView = new ModelAndView("/seller/items/success");
+		modelAndView.addObject("action", "updated");
+		return modelAndView;
 	}
 	
 	@GetMapping("/downloadFile/{fileId}")
