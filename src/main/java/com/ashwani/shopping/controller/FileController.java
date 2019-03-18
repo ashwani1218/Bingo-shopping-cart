@@ -62,4 +62,18 @@ public class FileController {
 	            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + productImage.getImg_title() + "\"")
 	            .body(new ByteArrayResource(productImage.getImg_data()));
 	}
+	
+	@GetMapping("/images/{productId}")
+	public ResponseEntity<Resource> downloadImageForProduct(@PathVariable String productId) {
+	    // Load file from database
+	    ProductImage productImage = productImageService.getImageForProduct(Long.valueOf(productId));
+        if( productImage!=null ) {
+        		return ResponseEntity.ok()
+    	            .contentType(MediaType.parseMediaType(productImage.getContent_type()))
+    	            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + productImage.getImg_title() + "\"")
+    	            .body(new ByteArrayResource(productImage.getImg_data()));	
+        }else {
+        		return null;
+        }
+	}
 }

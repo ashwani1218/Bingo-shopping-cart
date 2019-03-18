@@ -30,16 +30,20 @@ public class ProductImage {
     @Column(name = "img_data", nullable = false)
     private byte[] img_data;
 
+    @Column(name = "uploadedDate")
+    private String uploadedDate;
+    
     public ProductImage() {
 
     }
 
-	public ProductImage(Long productId, String img_title, String content_type, byte[] img_data) {
+	public ProductImage(Long productId, String img_title, String content_type, byte[] img_data, String uploadedDate) {
 		super();
 		this.productId = productId;
 		this.img_title = img_title;
 		this.content_type = content_type;
 		this.img_data = img_data;
+		this.uploadedDate = uploadedDate;
 	}
 
 	public Long getImgId() {
@@ -80,5 +84,13 @@ public class ProductImage {
 
 	public void setImg_data(byte[] img_data) {
 		this.img_data = img_data;
+	}
+
+	public String getUploadedDate() {
+		return uploadedDate;
+	}
+
+	public void setUploadedDate(String uploadedDate) {
+		this.uploadedDate = uploadedDate;
 	}
 }

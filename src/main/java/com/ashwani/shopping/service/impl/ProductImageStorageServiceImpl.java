@@ -9,6 +9,7 @@ import com.ashwani.shopping.model.ProductImage;
 import com.ashwani.shopping.repository.ProductImageRepository;
 import com.ashwani.shopping.service.ProductImageService;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -22,7 +23,7 @@ public class ProductImageStorageServiceImpl implements ProductImageService {
     }
 
 	@Override
-	public ProductImage storeImageForProduct(MultipartFile file, Long product_id) {
+	public ProductImage storeImageForProduct(MultipartFile file, Long productId) {
 		
 		// Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -34,9 +35,15 @@ public class ProductImageStorageServiceImpl implements ProductImageService {
             }
 
             // String product_id, String img_title, byte[] img_data
-            ProductImage dbFile = new ProductImage(product_id, fileName,file.getContentType(),  file.getBytes());
+            ProductImage dbFile = new ProductImage(productId, fileName,file.getContentType(),  file.getBytes(), LocalDateTime.now().toString());
 
-            return productImageRepository.save(dbFile);
+            Optional<ProductImage> productImage = productImageRepository.findByProductId(productId);
+            
+            if(productImage.isPresent()) {
+            		dbFile.setImgId(productImage.get().getImgId());
+            }
+            
+            return productImageRepository.saveAndFlush(dbFile);
         } catch (IOException ex) {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
         }
